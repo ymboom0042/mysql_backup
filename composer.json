@@ -1,0 +1,23 @@
+{
+  "name": "ymboom0042/mysql_backup",
+  "description": "mysql backup",
+  "authors": [
+    {
+      "name": "ymboom",
+      "email": "362006539@q.com"
+    }
+  ],
+  "homepage":"https://github.com/ymboom0042/mysql_bacup",
+  "license": "MIT",
+  "keywords": [
+    "mysql",
+    "backup",
+    "ymboom0042"
+  ],
+
+  "autoload": {
+    "psr-4": {
+      "Ymboom0042\\MysqlBackup\\": "src/"
+    }
+  }
+}
