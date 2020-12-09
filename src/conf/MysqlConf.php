@@ -4,7 +4,7 @@ namespace Ymboom0042\Backup\conf;
 
 
 
-class Mysql
+class MysqlConf
 {
     const HOST = "127.0.0.1";
     const PORT = 3306;
@@ -12,6 +12,7 @@ class Mysql
     const PASSWORD = "";
     const DATABASE = "";
     const PATH = "";
+    const FILENAME = "";
 
     private static $MysqlConfMap = [
         "host" => self::HOST,
@@ -19,7 +20,8 @@ class Mysql
         "root" => self::ROOT,
         "password" => self::PASSWORD,
         "database" => self::DATABASE,
-        "path" => self::PATH
+        "path" => self::PATH,
+        "filename" => self::FILENAME
 
     ];
 
@@ -37,8 +39,26 @@ class Mysql
                     $conf[$k] = $m;
                 }
             }
+        } else {
+            return self::$MysqlConfMap;
         }
 
+        self::mkdirPath($conf["path"]);
         return $conf;
+    }
+
+
+    /**
+     * 创建目录
+     * @param string $path
+     */
+    private static function mkdirPath( string $path )
+    {
+        if ( $path ) {
+            if ( !file_exists($path)) {
+                var_dump($path);
+                exec("mkdir -p $path");
+            }
+        }
     }
 }
